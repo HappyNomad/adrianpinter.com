@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrian Pinter, AI engineer</title>
+<meta name="description" content="AI engineer. Context engineering for agents that hold up in production: tool calling, evals and guardrails.">
+<meta property="og:title" content="Adrian Pinter, AI engineer">
+<meta property="og:description" content="Context engineering for agents that hold up in production.">
+<meta property="og:url" content="https://adrianpinter.com/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #eef1ec;
+    --ink: #1c2633;
+    --pencil: #56616c;
+    --rule: #c6cdc4;
+    --link: #1f5f86;
+    --focus: #d8b51a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #151b22;
+      --ink: #e2e7ea;
+      --pencil: #9aa5ae;
+      --rule: #34404b;
+      --link: #8ec3e6;
+      --focus: #e6c842;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Literata", Georgia, serif;
+    font-optical-sizing: auto;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    font-weight: 380;
+  }
+
+  .page {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Who he is */
+  .name {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .role {
+    margin: 0.15rem 0 0;
+    color: var(--pencil);
+  }
+
+  /* The one memorable thing: the claim, then its three parts */
+  .claim {
+    margin: 4.5rem 0 4rem;
+    font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.75rem);
+    line-height: 1.18;
+    font-weight: 330;
+    letter-spacing: -0.012em;
+  }
+  .claim p { margin: 0; }
+  .claim .parts {
+    list-style: none;
+    margin: 1.4rem 0 0;
+    padding: 0 0 0 1.25em;
+    border-left: 2px solid var(--ink);
+  }
+  .claim .parts li {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .claim .parts li + li { margin-top: 0.35em; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .claim .parts li {
+      opacity: 0;
+      animation: arrive 700ms ease-out forwards;
+    }
+    .claim .parts li:nth-child(1) { animation-delay: 500ms; }
+    .claim .parts li:nth-child(2) { animation-delay: 900ms; }
+    .claim .parts li:nth-child(3) { animation-delay: 1300ms; }
+    @keyframes arrive { to { opacity: 1; } }
+  }
+
+  /* Reading */
+  section + section { margin-top: 3.5rem; }
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.375rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  p { margin: 0 0 1.1rem; }
+  ul.points {
+    margin: 0 0 1.25rem;
+    padding-left: 1.25em;
+  }
+  ul.points li + li { margin-top: 0.4rem; }
+  ul.points li::marker { color: var(--pencil); }
+
+  .contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .contact li + li { margin-top: 0.5rem; }
+
+  footer {
+    margin-top: 4.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    color: var(--pencil);
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 30rem) {
+    body { font-size: 1.0625rem; }
+    .page { padding: 3rem 1rem 4rem; }
+    .claim { margin: 3.25rem 0 3rem; }
+    .claim .parts { padding-left: 0.9em; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header>
+    <p class="name">Adrian Pinter</p>
+    <p class="role">AI engineer. Context engineering for agents that hold up in production.</p>
+  </header>
+
+  <div class="claim">
+    <p>Most AI agents don’t fail because the model is weak. They fail because of what the model was given:</p>
+    <ul class="parts">
+      <li>what it knows when it starts,</li>
+      <li>which tools it can reach,</li>
+      <li>and whether anyone measures what it does.</li>
+    </ul>
+  </div>
+
+  <section aria-label="What I do">
+    <p>That’s where I work. I’m an AI engineer who builds agents that hold up on real work, and I design their context from how models actually process text, not from prompt tricks.</p>
+    <p>At Diebold Nixdorf, I helped build and ship a production LLM agent that helps service technicians troubleshoot banking and retail devices. I worked on its tool calling, multi-agent coordination and retrieval, and designed the evals that kept it honest: generated ground truth scored for groundedness, relevance and accuracy, plus guardrails against hallucination, PII leakage and prompt injection.</p>
+    <p>Since then, my most demanding client has been my own life. I wrote agent skills that run on Claude over my Documents folder, on real data, every day:</p>
+    <ul class="points">
+      <li>Every session starts already knowing where each part of my life stands.</li>
+      <li>It checks what’s due or overdue across everything and names the one thing to do first.</li>
+      <li>It takes in email in bulk: deduplicates it, files it, pulls out attachments, and updates my notes with whatever changed.</li>
+      <li>It cuts big, avoided problems down to one step I can finish today.</li>
+    </ul>
+    <p>Now I’m building a harness for apps made entirely of prose and configuration, with no app code. An app starts as instructions a model carries out, and each part hardens into configuration once daily use shows it has to run the same way every time. Any model can plug in, and the data stays on the user’s own disk.</p>
+    <p>What agent engineering has taught me:</p>
+    <ul class="points">
+      <li>An agent is only as good as the documents it wakes up with.</li>
+      <li>If you can’t measure it, you can’t ship it.</li>
+      <li>Start in prose; make a part deterministic only once real use proves it needs to be.</li>
+    </ul>
+    <p>I got here through decades of production software, most of it in C# and .NET: enterprise work for Travelport, Prudential and Geisinger, and a point-of-sale system I designed and built for the Thai restaurant I co-owned. Thirteen years of running that restaurant left me with no patience for technology that doesn’t solve a real problem for the person using it.</p>
+    <p>I’m not tied to one stack anymore. With coding agents doing much of the typing, the language matters far less than the design, the evals and the judgment, so I use whatever the problem calls for.</p>
+    <p>I’m open to AI engineering roles, full-time or contract, and to conversations with teams building agents.</p>
+  </section>
+
+  <section aria-labelledby="talk">
+    <h2 id="talk">Things I’d like to talk about</h2>
+    <p>If any of these interests you too, get in touch.</p>
+    <ul class="points">
+      <li>Context engineering: what an agent knows when it starts</li>
+      <li>Agent skills that run a life, on real data, every day</li>
+      <li>Prompt design from how models actually read text</li>
+      <li>Apps made from prose and configuration</li>
+      <li>Marathons and trail running</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="reach">
+    <h2 id="reach">Get in touch</h2>
+    <ul class="contact">
+      <li>Email: <a href="mailto:adrian@chainreact.net">adrian@chainreact.net</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/theknow">linkedin.com/in/theknow</a></li>
+      <li>Video: <a href="https://youtube.com/shorts/uND_Qio3SuM">Meta Muse alternative: Claude on your own files</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 Adrian Pinter</p>
+  </footer>
+
+</main>
+</body>
+</html>
